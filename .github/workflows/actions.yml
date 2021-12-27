@@ -10,4 +10,4 @@ jobs:
         with: 
           who-to-greet: dhami
       - name: output of actions
-        run : echo "{{steps.greet.outputs.time}}"
+        run : echo "${{steps.greet.outputs.time}}"
