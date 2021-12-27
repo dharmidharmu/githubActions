@@ -10,4 +10,12 @@ jobs:
         run: |
           node -v
           npm -v
+  run-on-windows:
+    runs-on: windows-latest
+    steps:
+      - name: ps directory
+        run: Get-Location
+      - name: bash directory
+        run: pwd
+        shell: bash
 
