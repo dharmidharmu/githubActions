@@ -4,6 +4,10 @@ jobs:
   simple-action:
     runs-on: ubuntu-latest
     steps: 
+      - name: Diretory one
+        run : |
+          pwd
+          ls
       - name: simple js action
         uses: actions/hello-world-javascript-action@v1
         id: greet
@@ -11,3 +15,7 @@ jobs:
           who-to-greet: dhami
       - name: output of actions
         run : echo "${{steps.greet.outputs.time}}"
+      - name: Diretory two
+        run : |
+          pwd
+          ls
