@@ -1,7 +1,7 @@
 name: actions 
 on: [push]
 jobs:
-  simple action:
+  simple-action:
     runs-on: ubuntu-latest
     steps: 
       - name: simple js action
