@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
-        run: echo dharmi da
+        run: echho dharmi da
       - name: multilinetext
         run: |
           node -v
