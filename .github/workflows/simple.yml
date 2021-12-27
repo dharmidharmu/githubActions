@@ -1,0 +1,13 @@
+name: shell commands
+on: push
+jobs:
+  run-command-shell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo a string
+        run: echo dharmi da
+      - name: multilinetext
+        run: |
+          node -v
+          npm -v
+
