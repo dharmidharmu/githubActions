@@ -12,6 +12,7 @@ jobs:
           npm -v
   run-on-windows:
     runs-on: windows-latest
+    needs: ['run-command-shell']
     steps:
       - name: ps directory
         run: Get-Location
