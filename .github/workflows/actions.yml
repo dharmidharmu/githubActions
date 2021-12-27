@@ -19,3 +19,15 @@ jobs:
         run : |
           pwd
           ls
+      - name: environament variables
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_SHA
+          echo $GITHUB_WORKSPACE
+          echo "${{github.token}}"
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: Diretory three
+        run : |
+          pwd
+          ls
