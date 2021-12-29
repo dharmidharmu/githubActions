@@ -12,7 +12,7 @@ jobs:
         include:
           - os: windows-latest
             node_version: 6
-            is_true: "true"
+            is_true: "dharmi"
         exclude:
           - os: ubuntu-latest
             node_version: 7
