@@ -4,7 +4,7 @@ on:
     branches:
       -  master
 env: 
-  env_global: ${{github.secrets.env_global}}
+  env_global: ${{secrets.GITHUB_TOKEN}}
 jobs:
   Job_One:
     runs-on: ubuntu-latest
