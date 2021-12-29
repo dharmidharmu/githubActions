@@ -6,7 +6,7 @@ on:
     branches:
       - master
     tags:
-      - v1.*
+      - v1.4
     paths:
       - "**.yml"
 jobs:
