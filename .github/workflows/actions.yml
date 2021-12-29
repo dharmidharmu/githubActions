@@ -3,6 +3,8 @@ on:
   push:
   pull_request:
     types: [closed, assigned, opened, reopened]
+  issues:
+    types: [closed]
            
 jobs:
   simple-action:
