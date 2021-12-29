@@ -1,0 +1,17 @@
+name: matrix
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check node version
+        run: node -v
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 6
+      - name: check node version
+        run: node -v
+        
