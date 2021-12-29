@@ -1,5 +1,9 @@
 name: actions 
-on: [push,pull_request]        
+on:
+  push:
+  pull_request:
+    types: [closed, assigned, opened, reopened]
+           
 jobs:
   simple-action:
     runs-on: ubuntu-latest
