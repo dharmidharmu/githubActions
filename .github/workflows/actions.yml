@@ -1,10 +1,12 @@
 name: actions 
 on:
-  push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
-  issues:
-    types: [closed]
+  # push:
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
+  # issues:
+  #   types: [closed]
+  repository_dispatch:
+    types: [build]
            
 jobs:
   simple-action:
@@ -37,3 +39,5 @@ jobs:
         run : |
           pwd
           ls
+      - name: repository_dispatch
+        run: echo ${{github.event.client_payload.env}}
