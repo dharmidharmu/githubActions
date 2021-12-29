@@ -1,5 +1,7 @@
 name: shell commands
-on: push
+on:
+  schedule:
+    - cron: "0/5 * * * *"
 jobs:
   run-command-shell:
     runs-on: ubuntu-latest
