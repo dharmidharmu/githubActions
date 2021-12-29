@@ -1,5 +1,5 @@
 name: actions 
-on: [push]
+on: [push]        
 jobs:
   simple-action:
     runs-on: ubuntu-latest
