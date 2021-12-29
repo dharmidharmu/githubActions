@@ -1,0 +1,38 @@
+name: ENV variables
+on:
+  push: 
+    branches:
+      -  master
+env: 
+  env_global: Available to all jobs
+jobs:
+  Job_One:
+    runs-on: ubuntu-latest
+    env: 
+      env_job: Available to job one
+    steps:
+      - name: log env variables
+        env: 
+          env_step: Available to one step
+        run : |
+          echo "global: ${env_global}"
+          echo "Job: ${env_job}"
+          echo "Step: ${env_step}"
+  job_Default_variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Default_variables
+        run: |
+          echo "GITHUB_WORKFLOW ${GITHUB_WORKFLOW}"
+          echo "GITHUB_ACTION ${GITHUB_ACTION}"
+          echo "GITHUB_ACTIONS ${GITHUB_ACTIONS}"
+          echo "GITHUB_ACTOR ${GITHUB_ACTOR}"
+          echo "GITHUB_REPOSITORY ${GITHUB_REPOSITORY}"
+          echo "GITHUB_EVENT_NAME ${GITHUB_EVENT_NAME}"
+          echo "GITHUB_EVENT_PATH ${GITHUB_EVENT_PATH}"
+          echo "GITHUB_WORKSPACE ${GITHUB_WORKSPACE}"
+          echo "GITHUB_SHA ${GITHUB_SHA}"
+          echo "GITHUB_REF ${GITHUB_REF}"
+          echo "global: ${env_global}"
+          echo "Job: ${env_job}"
+          echo "Step: ${env_step}"

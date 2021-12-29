@@ -8,7 +8,7 @@ on:
     tags:
       - v2.*
     paths:
-      - "**.js"
+      - "**.yml"
 jobs:
   run-command-shell:
     runs-on: ubuntu-latest
