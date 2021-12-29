@@ -5,13 +5,17 @@ on:
       - develop
 jobs:
   version:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        os: [macos-latest, windows-latest,ubuntu-latest]
+        node_version: [6, 7, 8]
+    runs-on: ${{matrix.os}}
     steps:
       - name: check node version
         run: node -v
       - uses: actions/setup-node@v1
         with:
-          node-version: 6
+          node-version: ${{matrix.node_version}}
       - name: check node version
         run: node -v
         
