@@ -6,9 +6,9 @@ on:
     branches:
       - master
     tags:
-      - v1.*
+      - v2.*
     paths:
-      - "**.ynl"
+      - "**.yml"
 jobs:
   run-command-shell:
     runs-on: ubuntu-latest
