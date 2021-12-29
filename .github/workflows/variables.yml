@@ -4,7 +4,7 @@ on:
     branches:
       -  master
 env: 
-  env_global: Available to all jobs
+  env_global: ${{github.secrets.env_global}}
 jobs:
   Job_One:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Default_variables
         run: |
-          echo "GITHUB_WORKFLOW ${GITHUB_WORKFLOW}"
+          echo "GITHUB_WORKFLOW $GITHUB_WORKFLOW"
           echo "GITHUB_ACTION ${GITHUB_ACTION}"
           echo "GITHUB_ACTIONS ${GITHUB_ACTIONS}"
           echo "GITHUB_ACTOR ${GITHUB_ACTOR}"
@@ -36,3 +36,42 @@ jobs:
           echo "global: ${env_global}"
           echo "Job: ${env_job}"
           echo "Step: ${env_step}"
+  create_commit:
+    runs-on: ubuntu-latest 
+    permissions:
+      issues: write 
+    steps:
+      - name: Create issue using REST API
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Automated issue for commit: ${{ github.sha }}",
+            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
+            }' \
+          --fail
+  push_to_repo: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push to master repo
+        run: |
+          pwd
+          ls -a
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB.TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
+          git config --global user.email "abc@gmail.com"
+          git config --global user.name "abc"
+          git fetch
+          git branch
+          git checkout master
+          git branch --set-upstream-to=origin/master
+          git pull
+          ls -a
+          echo $RANDOM >> random.txt
+          ls -a 
+          git add .
+          git commit -m "Random"
+          git push
+
